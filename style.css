@@ -1,0 +1,17 @@
+.b {background-color: lightgray;
+  color: black;
+  border: block;
+  padding: 10px 30px;
+  border-radius: 10px;
+	}
+.b:hover {
+  background-color: gray;
+}
+.aku {background-color: skyblue;
+  color: black;
+  border: block;
+  padding: 10px 30px;
+  border-radius: 10px;
+	}
+.aku:hover {background-color: dodgerblue;
+}
