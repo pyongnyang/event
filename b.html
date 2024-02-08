@@ -1,0 +1,65 @@
+<html><head>
+  <title>일정사이트</title>
+  <meta name="viewport" content="width=device-width, initial-scale=0.7">
+  <style>
+    .hidden {
+      display: none;
+    }
+  </style>
+  <script>
+    function toggleText(elementId) {
+      var element = document.getElementById(elementId);
+      if (element.style.display === "none") {
+        element.style.display = "block";
+      } else {
+        element.style.display = "none";
+      }
+    }
+
+    function loadFileIntoParagraph(filePath, paragraphId) {
+      var xhttp = new XMLHttpRequest();
+      xhttp.onreadystatechange = function () {
+        if (this.readyState == 4 && this.status == 200) {
+          var paragraph = document.getElementById(paragraphId);
+          paragraph.innerText = this.responseText;
+        }
+      };
+      xhttp.open("GET", filePath, true);
+      xhttp.send();
+    }
+
+    function toggleContent(buttonId, paragraphId, filePath) {
+      var button = document.getElementById(buttonId);
+      var paragraph = document.getElementById(paragraphId);
+
+      if (paragraph.style.display === "none") {
+        toggleText(paragraphId);
+
+        if (paragraphId === "bckr") {
+          var bcjpParagraph = document.getElementById("bcjp");
+          if (bcjpParagraph.style.display === "block") {
+            toggleText("bcjp");
+          }
+        } else if (paragraphId === "bcjp") {
+          var bckrParagraph = document.getElementById("bckr");
+          if (bckrParagraph.style.display === "block") {
+            toggleText("bckr");
+          }
+        }
+
+        loadFileIntoParagraph(filePath, paragraphId);
+      } else {
+        toggleText(paragraphId);
+      }
+    }
+  </script>
+</head>
+
+<body>
+  <button style="width:200px; height:100px; font-size: 30px;" onclick="toggleContent('btn1', 'bckr', '한판일정.txt')">한판일정</button>
+  <button style="width:200px; height:100px; font-size: 30px" onclick="toggleContent('btn2', 'bcjp', '일판일정.txt')">일판일정</button>
+  <p id="bckr" class="hidden"></p>
+  <p id="bcjp" class="hidden" style="display: none;">일판일정<br><br>가챠<br><br>[10월 11일 ~ 18일] 개다래 뽑기<br><br>[10월 13일 ~ 18일] 쿠니오군 콜라보 뽑기 (적팀)<br>[10월 13일 ~ 18일] 쿠니오군 콜라보 뽑기 (백팀)<br>[10월 18일 ~ 11월 1일] 하츠네 미쿠 콜라보 뽑기 (+初音ミク 16th) [플] { MEIKO＆고양이, 고양이 루카, KAITO＆고양이, 고양이 린, 고양이 렌 유닛에게 3x 확률 업 }<br><br>[10월 16일 ~ 11월 1일] 할로윈 뽑기 (+백작 그리폰, 세뇌된 고양이 피쉬) [플] { 할로윈 귀요미 유닛에게 4x 확률 업 }<br>[10월 18일 ~ 20일] 드래곤 엠퍼러즈 (+해룡 다라이어던) [플|캠|그]<br>[10월 20일 ~ 23일] 하이퍼 고양이 축제 (+철의 정령 메탈릭) &lt;특별 드롭 확률 : 울슈레 = 9%&gt;<br>[10월 23일 ~ 25일] 다크 히어로즈 (+썬더 잭) [플|그|지]<br>[10월 25일 ~ 27일] 초환수 바사라즈 (+흑표) [플|캠|그]<br><br>확 : 확정 | 스 : 스탭 업 | 럭 : 뽑기 당 럭키티켓 1장 | 플 : 플래티넘 조각 | 캠 : 캠페인 한정 캐릭터 (귀요미, 등) | 그 : 그란돈 부대 | 지 : 지원 부대 캐릭터 (고양이 도령, 등)<br> <br>아이템/세일<br><br>[10월 4일 ~ 18일] 쿠니오군 콜라보 스탬프 {「熱血！にゃんこ大運動会」イベント開催記念}<br>[10월 4일 ~ 18일] 고양이 통조림 20개 [매일 지급] {8600万ダウンロード記念☆}<br>[10월 4일 ~ 18일] 감사 팩<br>[10월 16일 ~ 11월 1일] 웨하스 고양이 세일<br>[10월 18일 ~ 11월 1일] 이벤트 스탬프 {「初音ミク」コラボイベント開催記念スタンプ☆}<br>[10월 18일 ~ 11월 1일] 미쿠미쿠 가요제<br>[10월 18일 ~ 23일] 응원 세일! 고양이 통조림 팩<br>[10월 22일] 레어 티켓 1장 {にゃんにゃん記念日☆}<br>[10월 22일] 리더십 1개 {にゃんにゃん記念日☆}<br><br>스테이지/이벤트<br><br>[10월 4일 ~ 18일] 성재료 발굴제<br>[10월 4일 ~ 18일] 열혈! 구슬 굴림, 열혈! 장애물 경주<br>[10월 4일 ~ 18일] 극난도 카니발!, 극난도 카니발2!, 극난도 카니발3!<br>[10월 4일 ~ 18일] 세계편 트레져 페스티벌 (4일, 6일, 8일, 10일, 12일, 14일, 16일, 18일)<br>[10월 4일 ~ 18일] 미래편 트레져 페스티벌 (5일, 7일, 9일, 11일, 13일, 15일, 17일)<br>[10월 4일 ~ 18일] 우주편 트레져 페스티벌 (6일, 9일, 12일, 15일, 18일)<br>[10월 4일 ~ 11일] XP 대수확축제 초급, XP 대수확축제 중급, XP 대수확축제 상급, XP 울트라수확축제 초상급<br>[10월 6일 ~ 18일] 열혈! 이인삼각 저학년<br>[10월 8일 ~ 18일] 열혈! 이인삼각 중학년<br>[10월 10일 ~ 18일] 열혈! 이인삼각 고학년<br>[10월 11일 ~ 18일] 고양이 눈 동굴<br>[10월 12일 ~ 18일] 熱血！リレー大会 (00:00 ~ 24:00)<br>[10월 13일 ~ 20일] 오멘즈 강습<br>[10월 16일 ~ 11월 1일] #01 과자 쟁탈전, #02 할로윈 백귀야행<br>[10월 23일 ~ 11월 1일] #03 공포의 장난계획<br>[10월 18일 ~ 11월 1일] 하츠네 미쿠, MIKU EXPO, SNOW MIKU<br>[10월 18일 ~ 11월 1일] 強襲！電子の歌姫<br>[10월 18일 ~ 11월 1일] MIKU CHERRY (06:00 ~ 09:00, 12:00 ~ 15:00, 19:00 ~ 23:00)<br>[10월 18일 ~ 31일 10:59] 랭킹의 방<br>[10월 21일 ~ 22일] 週末ライブ DAY1<br>[10월 28일 ~ 29일] 週末ライブ DAY1<br>[10월 28일 ~ 29일] 週末ライブ DAY2<br> <br>미션<br><br>[10월 4일 ~ 18일] <br><br>  「열혈! 장애물 경주」를 기본 캐릭터 9종류로만 편성하여 1회 클리어하자냥! 「열혈! 장애물 경주」의 모든 스테이지가 클리어 대상 -&gt; 100000 XP<br>  열혈! 냥코 大운동회 스테이지를 10회 클리어하자냥! 열혈! 냥코 大운동회의 모든 스테이지가 클리어 대상 -&gt; 냥코 티켓 1장<br>  열혈! 냥코 大운동회 스테이지를 30회 클리어하자냥! 열혈! 냥코 大운동회 스테이지의 모든 스테이지가 클리어 대상 -&gt; 냥코 티켓 1장<br>  열혈! 냥코 大운동회 스테이지를 50회 클리어하자냥! 열혈! 냥코 大운동회 스테이지의 모든 스테이지가 클리어 대상 -&gt; 냥코 티켓 1장<br>  「열혈! 이인삼각」을 레어 캐릭터 2종류로만 편성하여 1회 클리어하자냥! 「열혈! 이인삼각」의 모든 스테이지가 클리어 대상 -&gt; 고양이 도령 1개<br>  「열혈! 이인삼각」을 EX 캐릭터 2종류로만 편성하여 1회 클리어하자냥! 「열혈! 이인삼각」의 모든 스테이지가 클리어 대상 -&gt; 스냥이퍼 1개<br>  열혈! 냥코 大운동회 한정 미션 6개를 모두 클리어하자냥 -&gt; 레어 티켓 1장<br><br>[10월 18일 ~ 11월 1일] <br><br>初音ミクコラボステージを10回クリアしよう。初音ミクコラボの全ステージがクリアカウントの対象 -&gt; 냥코 티켓 1장<br>初音ミクコラボステージを30回クリアしよう。初音ミクコラボの全ステージがクリアカウントの対象 -&gt; 냥코 티켓 1장<br>初音ミクコラボステージを50回クリアしよう。初音ミクコラボの全ステージがクリアカウントの対象 -&gt; 냥코 티켓 1장<br>*미쿠 콜라보 스테이지 10,30,50회 클리어</p>
+
+
+</body></html>
